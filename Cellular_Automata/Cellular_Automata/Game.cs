@@ -58,7 +58,7 @@ namespace Cellular_Automata
                 for (int k = 0; k < height; k++)
                 {
                     double alpha = Math.Round((Double)255 * block[i, k] / (p - 1));
-                    SolidBrush brush = new SolidBrush(Color.FromArgb((int)alpha, (int)alpha, (int)alpha));
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(255 - (int)alpha, (int)alpha,255 - (int)alpha));
                     g.FillRectangle(brush, i * size, k * size, size, size);
                 }
             }

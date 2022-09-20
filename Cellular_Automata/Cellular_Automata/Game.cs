@@ -15,7 +15,6 @@ namespace Cellular_Automata
         int size, p;
         int width, height;
         Random random;
-        int iterations = 0;
 
         public Game(int size, int p, int width, int height)
         {

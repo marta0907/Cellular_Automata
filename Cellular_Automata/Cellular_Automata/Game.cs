@@ -42,12 +42,10 @@ namespace Cellular_Automata
            
         }
 
-        public void UpdateBlocks(Rule rule, ref string message)
+        public bool UpdateBlocks(Rule rule)
         {
             rule.NextGeneation(buffer, block, p);
-            iterations++;
-            if (EqualGenerations()) message = $"Self-replication after {iterations} iterations";
-            else message = $"{iterations} iterations";
+            return EqualGenerations();
         }
 
         public Bitmap Draw(Bitmap bitmap)

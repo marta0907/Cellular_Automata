@@ -13,16 +13,14 @@ namespace Cellular_Automata
     {
         int[,] buffer, block, initial;
         int size, p;
-        int width, height;
+        int width = 5 , height = 5;
         Random random;
         private const int Rows = 500;
-        private const int Columns = 1;
+        private const int Columns = 500;
 
 
-        public Game(int size, int p, int width, int height)
+        public Game(int size, int p)
         {
-            this.width = width;
-            this.height = height;
             this.size = size;
             this.p = p ;
             buffer = new int[Rows,Columns];

@@ -8,9 +8,7 @@ namespace Cellular_Automata
     public partial class Form1 : Form
     {
         private readonly int size = 10;
-        private readonly int p = 11;
-        private readonly int width =10; 
-        private readonly int height = 1;
+        private readonly int p = 5;
         private bool isSelfReplication = false;
         private int iterations = 0;
         Rule rule;
@@ -19,22 +17,20 @@ namespace Cellular_Automata
         public Form1()
         {
             InitializeComponent();
-            game = new Game(size, p, width, height);
+            game = new Game(size, p);
             bitmap = new Bitmap(pictureBox1.Width, pictureBox1.Height);
-            rule = new Rule_Left();
+            rule = new Rule_Neumann();
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             pictureBox1.Image = game.Draw(bitmap);
             iterations++;
-            this.Text = $"{iterations} iterations";
-            isSelfReplication = game.UpdateBlocks(rule);
             if (isSelfReplication)
             {
-                this.Text = $"self-replication on {iterations + 1} generation";
-                bitmap.Save($"C:\\tests\\test_5a_{p}\\{iterations}{Guid.NewGuid().ToString()}.jpg", ImageFormat.Jpeg);
+                bitmap.Save($"{iterations}.jpg", ImageFormat.Jpeg);
             }
+            isSelfReplication = game.UpdateBlocks(rule);
         }
 
         private void timer1_Tick(object sender, EventArgs e)

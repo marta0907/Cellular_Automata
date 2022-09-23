@@ -15,27 +15,37 @@ namespace Cellular_Automata
         int size, p;
         int width, height;
         Random random;
+        private const int Rows = 500;
+        private const int Columns = 1;
+
 
         public Game(int size, int p, int width, int height)
         {
             this.width = width;
             this.height = height;
-            this.size = size >= 0 ? size : 0;
-            this.p = p >= 0 ? p : 0;
-            buffer = new int[width,height];
-            block = new int[width,height];
+            this.size = size;
+            this.p = p ;
+            buffer = new int[Rows,Columns];
+            block = new int[Rows,Columns];
             initial = new int[width,height];
             random = new Random();
             InitBlocks();
         }
         public void InitBlocks()
         {
-            for (int i = 0; i < width; i++)
+            for (int i = 0; i < Rows; i++)
             {
-                for(int j = 0; j < height; j++)
+                for(int j = 0; j < Columns; j++)
                 {
-                    block[i,j] = random.Next(p);
-                    initial[i,j] = block[i,j];
+                    if (i < width && j < height)
+                    {
+                        block[i, j] = random.Next(p);
+                        initial[i, j] = block[i, j];
+                    }
+                    else
+                    {
+                        block[i, j] = 0;
+                    }
                 }
             }
            
@@ -50,9 +60,9 @@ namespace Cellular_Automata
         public Bitmap Draw(Bitmap bitmap)
         {
             Graphics g = Graphics.FromImage(bitmap);
-            for (int i = 0; i < width; i++)
+            for (int i = 0; i < Rows; i++)
             {
-                for (int k = 0; k < height; k++)
+                for (int k = 0; k < Columns; k++)
                 {
                     double alpha = Math.Round((Double)255 * block[i, k] / (p - 1));
                     SolidBrush brush = new SolidBrush(Color.FromArgb(255 - (int)alpha, (int)alpha,255 - (int)alpha));

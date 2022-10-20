@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace Cellular_Automata
+﻿namespace Cellular_Automata
 {
     public class Game
     {
@@ -15,8 +6,8 @@ namespace Cellular_Automata
         int size, p;
         int width = 5 , height = 5;
         Random random;
-        private const int Rows = 500;
-        private const int Columns = 500;
+        private const int Rows = 700;
+        private const int Columns = 700;
 
 
         public Game(int size, int p)

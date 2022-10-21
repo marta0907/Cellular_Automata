@@ -3,17 +3,15 @@
     public class Game
     {
         int[,] buffer, block, initial;
-        int size, p;
-        int width = 5 , height = 5;
+        int width = 3 , height = 3;
         Random random;
-        private const int Rows = 700;
-        private const int Columns = 700;
-
-
-        public Game(int size, int p)
+        private const int Rows = 507;
+        private const int Columns = 507;
+        private bool hasNoise = true;
+        private readonly int size = 5;
+        private readonly int p = 7;
+        public Game()
         {
-            this.size = size;
-            this.p = p ;
             buffer = new int[Rows,Columns];
             block = new int[Rows,Columns];
             initial = new int[width,height];
@@ -42,7 +40,7 @@
 
         public bool UpdateBlocks(Rule rule)
         {
-            rule.NextGeneation(buffer, block, p);
+            rule.NextGeneration(buffer, block, p, hasNoise);
             return EqualGenerations();
         }
 
